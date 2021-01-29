@@ -39,21 +39,29 @@ public class Main {
 		
 		//need more code :)
 		
+		// Input string to be changed later when connected to menu options
 		String input = "-X+5+25X^-2-10";
 		
 		ArrayList<Term> terms = new ArrayList<>();
 		
+		// Split string into an array of terms
 		input = input.replace("-", "+-");
-		System.out.println(input);
 		String arr[] = input.split("\\+");
+		
+		// Create new ArrayList of terms
 		ArrayList<String> poly = new ArrayList<>();
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] != "") {
 				poly.add(arr[i]);
 			}
 		}
-		System.out.println(poly.toString());
-		poly.remove(0);
+		
+		// If any element is empty remove it
+		for (int i = 0; i < poly.size(); i++) {
+			if (poly.get(i).isEmpty()) {
+				poly.remove(i);
+			}
+		}
 		System.out.println(poly.toString());
 	
 		
@@ -91,6 +99,7 @@ public class Main {
 			} 
 		}
 		
+		// Output the ArrayList of terms 
 		for (int i = 0; i < terms.size(); i++) {
 			System.out.print(terms.get(i).toString());
 		}
