@@ -1,0 +1,13 @@
+public interface Comparable<Term>{
+	
+	/** compares two Terms to see which one has a higher value or to see if they should be combined
+	 * @param term: first term to compare
+	 * @param other: second term to compare
+	 * 
+	 * @return: 1 if the first term is bigger value
+	 * 			0 if they are the same and should be added
+	 * 		   -1 if the second term is bigger value
+	 */
+	public int compareTo(Term other);
+
+	}
