@@ -3,6 +3,8 @@ public class Term implements Comparable<Term>{
 	//data fields
 	private int coefficient;
 	private int exponent;
+	Term result;
+	ArrayList<Term> listOfTerms;
 	
 	//default constructor
 	public Term() {}
@@ -41,6 +43,31 @@ public class Term implements Comparable<Term>{
 		else {
 			return 0;  //they should be combined
 		}
+	}
+	
+	/**
+	 * Reduces two polynomial terms (x, y) based on if they have the same exponent.
+	 * @param a the first term (coefficient, exponent).
+	 * @param b the second term (coefficient, exponent).
+	 * @return: A new term which is the sum of the two like exponent terms.
+	 */
+	public Term reduceLikeTerms(Term a, Term b) {
+		if (a.getExp() != b.getExp()) {
+			return null;
+		} else {
+			int sum = a.getCoe() + b.getCoe();
+			int exp = a.getExp();
+			Term result = new Term(sum, exp);
+			return result;
+		}
+	}
+	
+	/**
+	 * Adds the sum polynomial of two polynomials to the ArrayList<Term> listOfTerms
+	 * @param result from reduceLikeTerms() method.
+	 */
+	public void addTolistTerms(Term result) {
+		listOfTerms.add(result);
 	}
 	
 	@Override
