@@ -1,0 +1,47 @@
+public class Term implements Comparable<Term>{
+	
+	//data fields
+	private int coefficient;
+	private int exponent;
+	
+	//default constructor
+	public Term() {}
+	
+	public Term(int newCoe, int newExp) {
+		coefficient = newCoe; 
+		exponent = newExp;
+	}
+	
+	//setters
+	public void setCoefficient(int newCoe) { coefficient = newCoe; }
+	public void setExponent(int newExp) { exponent = newExp; }
+	
+	//getters
+	public int getCoefficient() { return coefficient; }
+	public int getExponent() { return exponent; }
+
+	//methods
+	
+	/** compares two Terms to see which one has a higher value or to see if they should be combined
+	 * @param term: first term to compare
+	 * @param other: second term to compare
+	 * 
+	 * @return: 1 if the first term is bigger value
+	 * 			0 if they are the same and should be added
+	 * 		   -1 if the second term is bigger value
+	 */
+	@Override
+	public int compareTo(Term other) {
+		if (exponent > other.exponent) {
+			return 1;  //the first is bigger
+		}
+		else if (other.exponent > exponent){
+			return -1; //the second is bigger
+		}
+		else {
+			return 0;  //they should be combined
+		}
+	}
+	
+
+}
