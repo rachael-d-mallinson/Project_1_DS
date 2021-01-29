@@ -43,5 +43,10 @@ public class Term implements Comparable<Term>{
 		}
 	}
 	
+	@Override
+	 public String toString() {
+		return String.format("[%d, %d]", coefficient, exponent);
+	 }
+	
 
 }
