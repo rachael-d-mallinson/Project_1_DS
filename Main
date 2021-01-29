@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main (String[] args) {
+		Scanner scnr = new Scanner(System.in);
+		
+		//Make a user-friendly menu
+		String UserMenuPrompt = "Polynomial Calculator\nPlease Choose your Menu Option by choosing a Number to enter.";
+		String UserMenuOptions = " 1. Enter Two Polynomials to Add \n 2. Add the entered Polynomials\n 3. Quit\nEnter here:";
+		boolean systemRunning = true;
+		
+		while (systemRunning) {
+			System.out.println(UserMenuPrompt);		//title, and menu instructions
+			System.out.print(UserMenuOptions);		//menu options
+			int userChoice = scnr.nextInt();		//read in their choice
+			String firstPoly;						//the first polynomial given
+			String secondPoly;						//the second polynomial given
+		
+			if (userChoice == 1) {
+				System.out.print("First Polynomial: ");
+				firstPoly = scnr.next();
+				System.out.print("Second Polynomial: ");
+				secondPoly = scnr.next();
+			}
+			else if (userChoice == 2) {
+				System.out.print("still have to figure this out");
+			}
+			else if (userChoice == 3) {
+				System.out.println("Thank you for using the Polynomial Calculator. Have a great day!");
+				systemRunning = false;
+			}
+			else {
+				System.out.println("Please pick one of the Menu Options. You'll be redirected.\n ");
+			}
+		}
+		
+	
+		
+		
+		//need more code :)
+		
+	}
+}
