@@ -119,6 +119,6 @@ public class Main {
 		
 		
 		//need more code :)
-		
+		scnr.close();	
 	}
 }
