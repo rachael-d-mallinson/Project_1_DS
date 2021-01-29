@@ -52,7 +52,7 @@ public class Main {
 				poly.add(arr[i]);
 			}
 		}
-		
+		System.out.println(poly.toString());
 		poly.remove(0);
 		System.out.println(poly.toString());
 	
