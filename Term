@@ -51,12 +51,12 @@ public class Term implements Comparable<Term>{
 	 * @param b the second term (coefficient, exponent).
 	 * @return: A new term which is the sum of the two like exponent terms.
 	 */
-	public Term reduceLikeTerms(Term a, Term b) {
-		if (a.getExp() != b.getExp()) {
+	public Term reduceLikeTerms(Term other) {
+		if (exponent != other.exponent) {
 			return null;
 		} else {
-			int sum = a.getCoe() + b.getCoe();
-			int exp = a.getExp();
+			int sum = coefficient + other.coefficient;
+			int exp = exponent;
 			Term result = new Term(sum, exp);
 			return result;
 		}
