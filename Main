@@ -88,7 +88,6 @@ public class Main {
 		StringBuilder poly = new StringBuilder();
 		while (iterator.hasNext()) {
 			Term term = iterator.next();
-			if (poly.length() == 0) {}
 			if (term.getExponent() == 0) {
 				if (term.getCoefficient() < 1) {
 					if (poly.length() == 0) { poly.append(String.format("%d ", term.getCoefficient())); }
