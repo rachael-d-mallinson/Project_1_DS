@@ -6,7 +6,7 @@ public class Main {
 	 * @param input: A polynomial entered as a String
 	 * @return: An ArrayList of Term objects
 	 */
-	public static ArrayList<Term> polynomialSplitter(String input) {
+	public static ArrayList<Term> splitPolynomial(String input) {
 		ArrayList<Term> terms = new ArrayList<>(); // Create a new ArrayList to hold terms
 		input = input.replace("-", "+-"); // Replace all negatives with +-
 		
@@ -77,6 +77,50 @@ public class Main {
 
 		return terms;
 	}
+	
+	/**
+	 * Outputs a polynomial in a user-friendly way
+	 * @param terms: An ArrayList of Terms
+	 * @return: A polynomial as a String
+	 */
+	public static String outputPolynomial(ArrayList<Term> terms) {
+		Iterator<Term> iterator = terms.iterator();
+		StringBuilder poly = new StringBuilder();
+		while (iterator.hasNext()) {
+			Term term = iterator.next();
+			if (poly.length() == 0) {}
+			if (term.getExponent() == 0) {
+				if (term.getCoefficient() < 1) {
+					if (poly.length() == 0) { poly.append(String.format("%d ", term.getCoefficient())); }
+					else { poly.append(String.format("- %d ", Math.abs(term.getCoefficient()))); }
+				} else {
+					if (poly.length() == 0) { poly.append(String.format("%d ", term.getCoefficient())); }
+					else { poly.append(String.format("+ %d ", term.getCoefficient())); }
+				}
+			} else if (term.getCoefficient() == 1 && term.getExponent() == 1) {
+				if (poly.length() == 0) { poly.append("X "); }
+				else { poly.append("+ X "); }
+			} else if (term.getCoefficient() == -1 && term.getExponent() == 1) {
+				if (poly.length() == 0) { poly.append("-X "); }
+				else { poly.append("- X "); }
+			} else if (term.getCoefficient() == 1 && term.getExponent() != 1) {
+				if (poly.length() == 0) { poly.append(String.format("X^%d ", term.getExponent())); }
+				else { poly.append(String.format("+ X^%d ", term.getExponent())); }
+			} else if (term.getCoefficient() == -1 && term.getExponent() != 1) {
+				if (poly.length() == 0) { poly.append(String.format("-X^%d ", term.getExponent())); }
+				else { poly.append(String.format("- X^%d ", term.getExponent())); }
+			} else {
+				if (term.getCoefficient() < 1) {
+					if (poly.length() == 0) { poly.append(String.format("-%dX^%d ", Math.abs(term.getCoefficient()), term.getExponent())); }
+					else { poly.append(String.format("- %dX^%d ", Math.abs(term.getCoefficient()), term.getExponent())); }
+				} else {
+					if (poly.length() == 0) { poly.append(String.format("%dX^%d ", Math.abs(term.getCoefficient()), term.getExponent())); }
+					else { poly.append(String.format("+ %dX^%d ", term.getCoefficient(), term.getExponent())); }
+				}
+			}		
+		}
+		return poly.toString();	
+	}
 
 
 	public static void main (String[] args) {
@@ -102,8 +146,8 @@ public class Main {
 				secondPoly = scnr.next();
 			}
 			else if (userChoice == 2) {
-				combined.addAll(polynomialSplitter(firstPoly));
-				combined.addAll(polynomialSplitter(secondPoly));
+				combined.addAll(splitPolynomial(firstPoly));
+				combined.addAll(splitPolynomial(secondPoly));
 				System.out.print("Next step is to send combined ArrayList to be reduced.");
 			}
 			else if (userChoice == 3) {
