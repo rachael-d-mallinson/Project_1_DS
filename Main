@@ -135,8 +135,8 @@ public class Main {
 			System.out.println(UserMenuPrompt);		//title, and menu instructions
 			System.out.print(UserMenuOptions);		//menu options
 			int userChoice = scnr.nextInt();		//read in their choice
-			String firstPoly;				//the first polynomial given
-			String secondPoly;				//the second polynomial given
+			String firstPoly = "";				//the first polynomial given
+			String secondPoly = "";				//the second polynomial given
 			ArrayList<Term> combined = new ArrayList<>(); 	// ArrayList to store both polynomials
 		
 			if (userChoice == 1) {
