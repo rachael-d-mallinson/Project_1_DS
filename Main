@@ -221,7 +221,7 @@ public class Main {
 		
 		//Make a user-friendly menu
 		String UserMenuPrompt = "Polynomial Calculator\nPlease Choose your Menu Option by choosing a Number to enter.";
-		String UserMenuOptions = " 1. Enter Two Polynomials to get the product 2. Quit\nEnter here:";
+		String UserMenuOptions = "1. Enter Two Polynomials to get the product \n2. Quit\nEnter here:";
 		boolean systemRunning = true;
 		
 		while (systemRunning) {
