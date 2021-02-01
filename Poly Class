@@ -2,27 +2,24 @@ package polynomialAddition;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 public class Poly extends Term {
-	
+
 	// Data fields
 	private ArrayList<Term> listOfTerms;
-	
+
 	// Constructors
 	public Poly() {} // Default Constructor
-	
-	public Poly(ArrayList<Term> listOfTerms) {
-		this.listOfTerms = listOfTerms;
-	}
-	
+
+	public Poly(ArrayList<Term> listOfTerms) { this.listOfTerms = listOfTerms; }
+
 	// Getter
 	public ArrayList<Term> getPoly() { return listOfTerms; }
-	
+
 	// Setter
-	public void setPoly(ArrayList<Term> list) {
-		listOfTerms = list;
-	}
-	
+	public void setPoly(ArrayList<Term> list) { listOfTerms = list; }
+
 	// Methods
 
 	/**
@@ -34,8 +31,8 @@ public class Poly extends Term {
 		Iterator<Term> iterator = poly.iterator();
 		int maxExp = Integer.MIN_VALUE;
 		Term maxTerm = null;
-		
-		while (iterator.hasNext() ) {
+
+		while (iterator.hasNext()) {
 			Term tempTerm = iterator.next();
 			int temp = tempTerm.getExponent();
 			if (temp > maxExp) {
@@ -45,7 +42,7 @@ public class Poly extends Term {
 		}
 		return maxTerm;
 	}
-	
+
 	/**
 	 * Sorted the ArrayList of polynomial terms by largest to smallest
 	 * @param poly: the ArrayList of Terms
@@ -54,7 +51,7 @@ public class Poly extends Term {
 	public ArrayList<Term> sort(ArrayList<Term> poly) {
 		ArrayList<Term> sortedList = new ArrayList<>();
 		Iterator<Term> iterator = poly.iterator();
-		
+
 		if (poly != null) {
 			while (iterator.hasNext()) {
 				Term maxTerm = findMaxTerm(poly);
@@ -64,49 +61,33 @@ public class Poly extends Term {
 		}
 		return sortedList;
 	} // Time complexity: O(n^2)
-	
-  // FIX ME FOR I DO NOT WORK PROPERLY
-  
+
 	/**
 	 * Reduces (adds) like terms inside the added polynomial ArrayList
 	 * @param poly: the sorted ArrayList containing all the Terms of both polynomials
 	 * @return: The sum of both polynomials with all like Terms added together
 	 */
-	public ArrayList<Term> sumPolynomial(ArrayList<Term> poly) {
+	public static ArrayList<Term> sumPolynomial(ArrayList<Term> poly) {
 		ArrayList<Term> reducedList = new ArrayList<>();
-		Iterator<Term> iterator = poly.iterator();
-		
+		ListIterator<Term> iterator = poly.listIterator();
+
 		if (poly != null) {
 			while (iterator.hasNext()) {
 				Term q = iterator.next();
-				Term reduced = compareTerms(poly, q);
-				reducedList.add(reduced);
-				iterator.remove();
+				if (!iterator.hasNext()) {
+					reducedList.add(q);
+					break;
+				} else if (q.compareTo(iterator.next()) == 0) {
+					Term p = iterator.previous();
+					Term reduced = q.reduceLikeTerms(p);
+					reducedList.add(reduced);
+					iterator.next();
+				} else {
+					iterator.previous();
+					reducedList.add(q);
+				}
 			}
 		}
 		return reducedList;
-		
 	}
-	
-	/**
-	 * Comparing terms by exponents and calling reduceLikeTerms if the exponents match
-	 * @param poly: ArrayList of Terms
-	 * @param term: The Term to be compared
-	 * @return: The Term representing the sum of two like Terms
-	 */
-	public Term compareTerms(ArrayList<Term> poly, Term term) {
-		Iterator<Term> iterator = poly.iterator();
-		Term reduced = null;
-		
-		while (iterator.hasNext()) {
-			Term a = iterator.next();
-			if (term.compareTo(a) == 0) {
-				reduced = term.reduceLikeTerms(a);
-				return reduced;
-			} 
-		}
-		return term;
-		
-	}
-	
 }
