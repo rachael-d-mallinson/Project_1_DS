@@ -139,28 +139,50 @@ public class Main {
 	 */
 	public static ArrayList<Term> sumPolynomial(ArrayList<Term> poly) {
 		ArrayList<Term> reducedList = new ArrayList<>();
+		Term placeHolder = new Term(0, 0);
+		reducedList.add(placeHolder);
 		ListIterator<Term> iterator = poly.listIterator();
 
 		if (poly != null) {
 			while (iterator.hasNext()) {
 				Term q = iterator.next();
 				if (!iterator.hasNext()) {
-					reducedList.add(q);
-					break;
+					if (reducedList.get(reducedList.size() - 1).getExponent() == q.getExponent()) {
+						break;
+					} else {
+						reducedList.add(q);
+						break;
+					}
 				} else if (q.compareTo(iterator.next()) == 0) {
 					Term p = iterator.previous();
 					Term reduced = q.reduceLikeTerms(p);
 					if (reduced.getCoefficient() == 0) {
 						iterator.next();
 						continue;
-					} else { reducedList.add(reduced); }
-					iterator.next();
+					} else {
+						if (reducedList.get(reducedList.size() - 1).getExponent() == reduced.getExponent()) {
+							reducedList.set(reducedList.size() - 1, reduced);
+							p.setCoefficient(reduced.getCoefficient());
+						} else {
+							p.setCoefficient(reduced.getCoefficient());
+							reducedList.add(reduced);
+						}
+					}
+
 				} else {
-					iterator.previous();
-					reducedList.add(q);
+					if (reducedList.isEmpty()) {
+						reducedList.add(q);
+					} else if (reducedList.get(reducedList.size() - 1).equals(q)) {
+						iterator.previous();
+						continue;
+					} else {
+						iterator.previous();
+						reducedList.add(q);
+					}
 				}
 			}
 		}
+		reducedList.remove(placeHolder);
 		return reducedList;
 	}
 	
