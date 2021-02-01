@@ -233,6 +233,7 @@ public class Main {
 			ArrayList<Term> combined = new ArrayList<>(); 	// ArrayList to store both polynomials
 		
 			if (userChoice == 1) {
+				System.out.println("Please enter two polynomials without Spaces and where all x's are lowercase.");
 				System.out.print("First Polynomial: ");
 				firstPoly = scnr.next();
 				System.out.print("Second Polynomial: ");
@@ -248,17 +249,27 @@ public class Main {
 				System.out.println("Try again? \n1. Yes\n2. No");
 				userChoice = scnr.nextInt();
 				
-				
-			}
+				//secondary menu
+				//user wishes to add two more polynomials
+				if (userChoice == 1) { systemRunning = true; }
+				//user wishes to quit
+				else if (userChoice == 2) {
+					System.out.println("Thank you for using the Polynomial Calculator. Have a great day!");
+					systemRunning = false; }
+				//user entered something other then the menu options
+				 else {
+					System.out.println("Please pick one of the Menu Options. You will be redirected.\n ");
+					}
+		}		
+			//user wishes to quit
 			else if (userChoice == 2) {
 				System.out.println("Thank you for using the Polynomial Calculator. Have a great day!");
-				systemRunning = false;
-			}
+				systemRunning = false; }
+			//user entered something other then the menu options
 			else {
 				System.out.println("Please pick one of the Menu Options. You will be redirected.\n ");
 			}
 		}
-		
 	
 		
 		
