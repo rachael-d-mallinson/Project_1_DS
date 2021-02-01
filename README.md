@@ -5,9 +5,9 @@ January 2021 - Intro to Data Structures with Java
 Project 1B
 
 TEAM SIX
-Rachael Mallinson
-Sofia Nikas
-Aleksis Martin
+ - Rachael Mallinson
+ - Sofia Nikas
+ - Aleksis Martin
 
 Design Explanation
 
