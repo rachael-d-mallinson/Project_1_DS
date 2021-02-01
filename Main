@@ -238,7 +238,7 @@ public class Main {
 				System.out.println(outputPolynomial(combined));
 				System.out.println();
 				System.out.println("Try again? \n1. Yes\n2. No");
-				userChoice = scnr.next();
+				userChoice = scnr.nextInt();
 				
 				
 			}
