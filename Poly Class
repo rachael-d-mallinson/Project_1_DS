@@ -80,7 +80,10 @@ public class Poly extends Term {
 				} else if (q.compareTo(iterator.next()) == 0) {
 					Term p = iterator.previous();
 					Term reduced = q.reduceLikeTerms(p);
-					reducedList.add(reduced);
+					if (reduced.getCoefficient() == 0) {
+						iterator.next();
+						continue;
+					} else { reducedList.add(reduced); }
 					iterator.next();
 				} else {
 					iterator.previous();
