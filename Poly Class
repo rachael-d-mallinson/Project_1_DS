@@ -67,7 +67,7 @@ public class Poly extends Term {
 	 * @param poly: the sorted ArrayList containing all the Terms of both polynomials
 	 * @return: The sum of both polynomials with all like Terms added together
 	 */
-	public static ArrayList<Term> sumPolynomial(ArrayList<Term> poly) {
+	public ArrayList<Term> sumPolynomial(ArrayList<Term> poly) {
 		ArrayList<Term> reducedList = new ArrayList<>();
 		ListIterator<Term> iterator = poly.listIterator();
 
