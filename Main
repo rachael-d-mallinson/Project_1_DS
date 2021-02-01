@@ -29,6 +29,7 @@ public class Main {
 	 */
 	public static ArrayList<Term> splitPolynomial(String input) {
 		ArrayList<Term> terms = new ArrayList<>(); // Create a new ArrayList to hold terms
+		input = input.replace(" ", ""); // Remove any spaces
 		input = input.replace("-", "+-"); // Replace all negatives with +-
 		
 		String var = "";
@@ -236,6 +237,10 @@ public class Main {
 				combined = sumPolynomial(combined);
 				System.out.println(outputPolynomial(combined));
 				System.out.println();
+				System.out.println("Try again? \n1. Yes\n2. No");
+				userChoice = scnr.next();
+				
+				
 			}
 			else if (userChoice == 2) {
 				System.out.println("Thank you for using the Polynomial Calculator. Have a great day!");
