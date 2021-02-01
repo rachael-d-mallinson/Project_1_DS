@@ -168,7 +168,21 @@ public class Main {
 				}
 			}
 		}
-		reducedList.remove(placeHolder);
+		reducedList.remove(placeHolder); // Remove term (0, 0) from the reducedList
+		
+		// Could be a method but used to remove duplicate Terms from the reducedList
+		ListIterator<Term> reducedIterator = reducedList.listIterator();
+		while (reducedIterator.hasNext()) {
+			Term a = reducedIterator.next();
+			if (!reducedIterator.hasNext()) { a.reset(); }
+			else if (reducedIterator.hasNext()) {
+				Term b = reducedIterator.next();
+				if (a.compareTo(b) == 0) {
+					reducedIterator.previous();
+					reducedIterator.remove();
+				}
+			}
+		}
 		return reducedList;
 	}
 	
