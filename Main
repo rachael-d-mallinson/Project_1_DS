@@ -29,7 +29,6 @@ public class Main {
 	 */
 	public static ArrayList<Term> splitPolynomial(String input) {
 		ArrayList<Term> terms = new ArrayList<>(); // Create a new ArrayList to hold terms
-		input = input.replace(" ", ""); // Remove any spaces
 		input = input.replace("-", "+-"); // Replace all negatives with +-
 		
 		String var = "";
