@@ -3,8 +3,6 @@ public class Term implements Comparable<Term>{
 	//data fields
 	private int coefficient;
 	private int exponent;
-	Term result;
-	ArrayList<Term> listOfTerms;
 	
 	//default constructor
 	public Term() {}
