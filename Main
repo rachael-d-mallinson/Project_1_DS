@@ -2,6 +2,27 @@ import java.util.Scanner;
 
 public class Main {
 	/**
+	 * Finds the Term with the largest exponent in the passed in ArrayList of Terms
+	 * @param poly: the ArrayList of Terms
+	 * @return: Term with the largest exponent
+	 */
+	private static Term findMaxTerm(ArrayList<Term> poly) {
+		Iterator<Term> iterator = poly.iterator();
+		int maxExp = Integer.MIN_VALUE;
+		Term maxTerm = null;
+
+		while (iterator.hasNext()) {
+			Term tempTerm = iterator.next();
+			int temp = tempTerm.getExponent();
+			if (temp > maxExp) {
+				maxExp = temp;
+				maxTerm = tempTerm;
+			}
+		}
+		return maxTerm;
+	}
+	
+	/**
 	 * Splits polynomials into Term objects comprised of coefficients and exponents
 	 * @param input: A polynomial entered as a String
 	 * @return: An ArrayList of Term objects
@@ -76,6 +97,57 @@ public class Main {
 		}
 
 		return terms;
+	}
+	
+	/**
+	 * Sorted the ArrayList of polynomial terms by largest to smallest
+	 * @param poly: the ArrayList of Terms
+	 * @return sortedList: A sorted ArrayList of passed in terms by largest exponent to smallest
+	 */
+	public static ArrayList<Term> sort(ArrayList<Term> poly) {
+		ArrayList<Term> sortedList = new ArrayList<>();
+		Iterator<Term> iterator = poly.iterator();
+
+		if (poly != null) {
+			while (iterator.hasNext()) {
+				Term maxTerm = findMaxTerm(poly);
+				sortedList.add(maxTerm);
+				poly.remove(maxTerm);
+			}
+		}
+		return sortedList;
+	}
+	
+	/**
+	 * Reduces (adds) like terms inside the added polynomial ArrayList
+	 * @param poly: the sorted ArrayList containing all the Terms of both polynomials
+	 * @return: The sum of both polynomials with all like Terms added together
+	 */
+	public static ArrayList<Term> sumPolynomial(ArrayList<Term> poly) {
+		ArrayList<Term> reducedList = new ArrayList<>();
+		ListIterator<Term> iterator = poly.listIterator();
+
+		if (poly != null) {
+			while (iterator.hasNext()) {
+				Term q = iterator.next();
+				if (!iterator.hasNext()) {
+					reducedList.add(q);
+					break;
+				} else if (q.compareTo(iterator.next()) == 0) {
+					Term p = iterator.previous();
+					Term reduced = q.reduceLikeTerms(p);
+					if (reduced.getCoefficient() == 0) {
+						iterator.next();
+						continue;
+					} else { reducedList.add(reduced); }
+					iterator.next();
+				} else {
+					iterator.previous();
+					reducedList.add(q);
+				}
+			}
+		}
+		return reducedList;
 	}
 	
 	/**
