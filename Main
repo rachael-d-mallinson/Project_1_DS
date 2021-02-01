@@ -213,7 +213,7 @@ public class Main {
 		
 		//Make a user-friendly menu
 		String UserMenuPrompt = "Polynomial Calculator\nPlease Choose your Menu Option by choosing a Number to enter.";
-		String UserMenuOptions = " 1. Enter Two Polynomials to Add \n 2. Add the entered Polynomials\n 3. Quit\nEnter here:";
+		String UserMenuOptions = " 1. Enter Two Polynomials to get the product 2. Quit\nEnter here:";
 		boolean systemRunning = true;
 		
 		while (systemRunning) {
@@ -229,8 +229,8 @@ public class Main {
 				firstPoly = scnr.next();
 				System.out.print("Second Polynomial: ");
 				secondPoly = scnr.next();
-			}
-			else if (userChoice == 2) {
+				
+				//add the display the sum of the polynomials
 				combined.addAll(splitPolynomial(firstPoly));
 				combined.addAll(splitPolynomial(secondPoly));
 				combined = sort(combined);
@@ -238,12 +238,12 @@ public class Main {
 				System.out.println(outputPolynomial(combined));
 				System.out.println();
 			}
-			else if (userChoice == 3) {
+			else if (userChoice == 2) {
 				System.out.println("Thank you for using the Polynomial Calculator. Have a great day!");
 				systemRunning = false;
 			}
 			else {
-				System.out.println("Please pick one of the Menu Options. You'll be redirected.\n ");
+				System.out.println("Please pick one of the Menu Options. You will be redirected.\n ");
 			}
 		}
 		
