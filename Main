@@ -233,7 +233,10 @@ public class Main {
 			else if (userChoice == 2) {
 				combined.addAll(splitPolynomial(firstPoly));
 				combined.addAll(splitPolynomial(secondPoly));
-				System.out.print("Next step is to send combined ArrayList to be reduced.");
+				combined = sort(combined);
+				combined = sumPolynomial(combined);
+				System.out.println(outputPolynomial(combined));
+				System.out.println();
 			}
 			else if (userChoice == 3) {
 				System.out.println("Thank you for using the Polynomial Calculator. Have a great day!");
