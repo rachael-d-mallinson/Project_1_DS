@@ -62,18 +62,8 @@ public class Term implements Comparable<Term>{
 		}
 	}
 	
-	/**
-	 * Adds the sum polynomial of two polynomials to the ArrayList<Term> listOfTerms
-	 * @param result from reduceLikeTerms() method.
-	 */
-	public void addTolistTerms(Term result) {
-		listOfTerms.add(result);
-	}
-	
 	@Override
 	 public String toString() {
 		return String.format("[%d, %d]", coefficient, exponent);
 	 }
-	
-
 }
