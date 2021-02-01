@@ -233,7 +233,7 @@ public class Main {
 			ArrayList<Term> combined = new ArrayList<>(); 	// ArrayList to store both polynomials
 		
 			if (userChoice == 1) {
-				System.out.println("Please enter two polynomials without Spaces and where all x's are lowercase.");
+				System.out.println("Please enter two polynomials with no spaces and all variables are \"x\".");
 				System.out.print("First Polynomial: ");
 				firstPoly = scnr.next();
 				System.out.print("Second Polynomial: ");
