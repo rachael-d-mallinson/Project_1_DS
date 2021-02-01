@@ -21,6 +21,5 @@ How to use the Polynomial Calculator:
 1. Open and Run the Main program.
 2. Choose from the numbered list, and enter that number.
 3. When prompted, enter your two polynomials that you want added together.
-4. Then choose the addition button, after you've entered your polynomials.
    The added and simplified Polynomial will show in the console.
-5. Start over if you wish.
+4. Start over if you wish.
