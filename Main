@@ -125,65 +125,28 @@ public class Main {
 	 */
 	public static ArrayList<Term> sumPolynomial(ArrayList<Term> poly) {
 		ArrayList<Term> reducedList = new ArrayList<>();
-		Term placeHolder = new Term(0, 0);
-		reducedList.add(placeHolder);
-		ListIterator<Term> iterator = poly.listIterator();
-
-		if (poly != null) {
-			while (iterator.hasNext()) {
-				Term q = iterator.next();
-				if (!iterator.hasNext()) {
-					if (reducedList.get(reducedList.size() - 1).getExponent() == q.getExponent()) {
-						break;
-					} else {
-						reducedList.add(q);
-						break;
-					}
-				} else if (q.compareTo(iterator.next()) == 0) {
-					Term p = iterator.previous();
-					Term reduced = q.reduceLikeTerms(p);
-					if (reduced.getCoefficient() == 0) {
-						iterator.next();
-						continue;
-					} else {
-						if (reducedList.get(reducedList.size() - 1).getExponent() == reduced.getExponent()) {
-							reducedList.set(reducedList.size() - 1, reduced);
-							p.setCoefficient(reduced.getCoefficient());
-						} else {
-							p.setCoefficient(reduced.getCoefficient());
-							reducedList.add(reduced);
-						}
-					}
-
-				} else {
-					if (reducedList.isEmpty()) {
-						reducedList.add(q);
-					} else if (reducedList.get(reducedList.size() - 1).equals(q)) {
-						iterator.previous();
-						continue;
-					} else {
-						iterator.previous();
-						reducedList.add(q);
-					}
-				}
-			}
-		}
-		reducedList.remove(placeHolder); // Remove term (0, 0) from the reducedList
+		Iterator<Term> outer = poly.iterator();
+		Iterator<Term> inner = poly.iterator();
 		
-		// Could be a method but used to remove duplicate Terms from the reducedList
-		ListIterator<Term> reducedIterator = reducedList.listIterator();
-		while (reducedIterator.hasNext()) {
-			Term a = reducedIterator.next();
-			if (!reducedIterator.hasNext()) { a.reset(); }
-			else if (reducedIterator.hasNext()) {
-				Term b = reducedIterator.next();
+		inner.next();
+		while (outer.hasNext()) {
+			Term reduced = null;
+			Term a = outer.next();
+			while (inner.hasNext()) {
+				Term b = inner.next();
 				if (a.compareTo(b) == 0) {
-					reducedIterator.previous();
-					reducedIterator.remove();
+					reduced = a.reduceLikeTerms(b);
+					b.setCoefficient(reduced.getCoefficient());
+					a = outer.next();
+				} else {
+					break;
 				}
 			}
+			reducedList.add(a);
 		}
+		
 		return reducedList;
+		
 	}
 	
 	/**
