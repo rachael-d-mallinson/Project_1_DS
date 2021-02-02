@@ -11,15 +11,16 @@ public class Main {
 		int maxExp = Integer.MIN_VALUE;
 		Term maxTerm = null;
 
+		// While there are more terms in the list
 		while (iterator.hasNext()) {
-			Term tempTerm = iterator.next();
+			Term tempTerm = iterator.next(); // A temporary term is used to compare exponents
 			int temp = tempTerm.getExponent();
-			if (temp > maxExp) {
+			if (temp > maxExp) { // If the temporary term is larger, update the maximum term to match
 				maxExp = temp;
 				maxTerm = tempTerm;
 			}
 		}
-		return maxTerm;
+		return maxTerm; // Return the term with the largest exponent
 	}
 	
 	/**
