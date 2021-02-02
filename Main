@@ -109,11 +109,14 @@ public class Main {
 		ArrayList<Term> sortedList = new ArrayList<>();
 		Iterator<Term> iterator = poly.iterator();
 
+		// Make sure the input list is not empty
 		if (poly != null) {
 			while (iterator.hasNext()) {
+				
+				// Find the term with the largest exponent
 				Term maxTerm = findMaxTerm(poly);
-				sortedList.add(maxTerm);
-				poly.remove(maxTerm);
+				sortedList.add(maxTerm); // Add that term to the sorted list
+				poly.remove(maxTerm); // Remove the maxTerm from the input list
 			}
 		}
 		return sortedList;
