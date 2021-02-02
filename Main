@@ -256,9 +256,7 @@ public class Main {
 			}
 		}
 	
-		
-		
-		//need more code :)
+		// Close the scanner!
 		scnr.close();	
 	}
 }
