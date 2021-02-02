@@ -37,7 +37,7 @@ public class Main {
 		input = input.replace("-", "+-"); // Replace all negatives with +-
 		
 		// Convert all variables to lower case and update the string so all variables are the same
-		input = input.replace("X", "x"); 
+		input = input.replace("x", "X"); 
 		
 		// Create a new ArrayList of Strings split at the plus sign
 		List<String> poly = new ArrayList<String>(Arrays.asList(input.split("\\+"))); 
